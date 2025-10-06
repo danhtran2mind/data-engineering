@@ -1,5 +1,42 @@
 # Services Setup
 
+## Installation
+
+### Hadoop/HDFS
+
+```bash
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+tar -xzvf hadoop-3.3.6.tar.gz
+sudo mv hadoop-3.3.6 /opt/hadoop
+# Add Hadoop bin to PATH in ~/.bashrc or ~/.zshrc:
+export HADOOP_HOME=/opt/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+```
+> Configure core-site.xml and hdfs-site.xml as needed for your environment.
+
+### Spark
+
+```bash
+wget https://downloads.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz
+tar -xzvf spark-3.5.1-bin-hadoop3.tgz
+sudo mv spark-3.5.1-bin-hadoop3 /opt/spark
+# Add Spark bin to PATH in ~/.bashrc or ~/.zshrc:
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin
+```
+
+### Airflow
+
+```bash
+pip install apache-airflow
+# Initialize Airflow DB and create default user:
+airflow db init
+```
+
+> For more details, see the official docs for [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/), and [Airflow](https://airflow.apache.org/).
+
 ## Airflow
 
 Start the Airflow webserver and scheduler:

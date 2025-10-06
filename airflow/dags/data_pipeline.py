@@ -32,7 +32,7 @@ with DAG('data_engineering_pipeline',
         bash_command='spark-submit /workspaces/data-engineering/spark/process_data.py'
     )
 
-    # 4. LSTM deep learning training
+    # 4. LSTM deep learning training (runs daily)
     lstm_train = BashOperator(
         task_id='lstm_train',
         bash_command='python3 /workspaces/data-engineering/spark/lstm_train.py'
